@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle,FaGithub } from "react-icons/fa";
 import { Button } from "@components/ui/button";
 import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
@@ -152,6 +152,19 @@ const page = () => {
               <FaGoogle />
             </span>
             Sign in With Google
+          </Button>
+          <Button
+            className="w-[100%]"
+            onClick={() =>
+              supabase.auth.signInWithOAuth({
+                provider: "github",
+              })
+            }
+          >
+            <span className="mr-2">
+              <FaGithub />
+            </span>
+            Sign In With Github
           </Button>
         </CardFooter>
       </Card>

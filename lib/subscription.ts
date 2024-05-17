@@ -12,6 +12,7 @@ export async function getUserSubscriptionPlan(userId: string) {
     .eq("user_id", userId)
     .single();
 
+  
   if (!profile) throw new Error("User not found");
 
   // Convert the string to a Moment.js object

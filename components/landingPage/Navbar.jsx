@@ -16,6 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { LangSwitcher } from "@/components/header/LangSwitcher";
 
 const Navbar = () => {
   const session = useSession();
@@ -66,16 +67,16 @@ const Navbar = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem>
-                  <Link href={"/"}>Home</Link>
+                  <Link href={""}>Home</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href={"/#features"}>Features</Link>
+                  <Link href={"#features"}>Features</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href={"/#pricing"}>Pricing</Link>
+                  <Link href={"#pricing"}>Pricing</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href={"/#faqs"}>Faqs</Link>
+                  <Link href={"#faqs"}>Faqs</Link>
                 </DropdownMenuItem>
                 {session && (
                   <DropdownMenuItem>
@@ -102,7 +103,7 @@ const Navbar = () => {
             <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border  rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  ">
               <li>
                 <Link
-                  href="/#features"
+                  href="#features"
                   class="block py-2 px-3  rounded md:bg-transparent md:p-0 "
                 >
                   Features
@@ -110,7 +111,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/#pricing"
+                  href="#pricing"
                   class="block py-2 px-3  rounded    md:p-0    "
                 >
                   Pricing
@@ -118,7 +119,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/#faqs"
+                  href="#faqs"
                   class="block py-2 px-3  rounded    md:p-0    "
                 >
                   Faqs
@@ -136,6 +137,7 @@ const Navbar = () => {
               )}
             </ul>
           </div>
+          <LangSwitcher />
         </div>
       </nav>
     </div>

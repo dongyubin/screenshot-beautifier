@@ -6,11 +6,12 @@ import { MdOutlineCelebration } from "react-icons/md";
 
 export default function Billings(billingUrl) {
   const router = useRouter();
-  console.log(billingUrl);
+  // console.log(billingUrl);
   const handleBillings = async (e) => {
     e.preventDefault();
-    console.log("button clicked");
-    window.location = "https://shotune.lemonsqueezy.com/billing";
+    // console.log("button clicked");
+    // window.location = "https://shotune.lemonsqueezy.com/billing";
+    window.location = "/#pricing";
   };
 
   return (
