@@ -9,7 +9,7 @@ import { ALL_FAQS } from "@/config/faqs";
 
 
 
-const Faqs = ({id, locale, langName,}) => {
+const Faqs = ({ id, locale, langName, }) => {
   const FAQS = ALL_FAQS[`FAQS_${langName.toUpperCase()}`];
   return (
     // <div
@@ -74,21 +74,18 @@ const Faqs = ({id, locale, langName,}) => {
     //     </AccordionItem>
     //   </Accordion>
     // </div>
-      <div
+    <div
       className="container mx-auto px-5 py-10 flex flex-col items-center"
       id={id}
     >
       <div className="flex flex-col text-center gap-4">
         <h2 className="text-center text-white">
-
-            {locale.title}
+          {locale.title}
         </h2>
         <p className="text-large text-default-500">{locale.description}</p>
       </div>
       <Accordion type="single" collapsible className="w-[100%] md:w-[50%]"
         items={FAQS}
-        // selectionMode="multiple"
-        // variant="splitted"
       >
         {FAQS?.map((item, index) => (
           <AccordionItem
@@ -100,7 +97,7 @@ const Faqs = ({id, locale, langName,}) => {
               {item.title}
             </AccordionTrigger>
             <AccordionContent className="text-start">
-            {item.content}
+              {item.content}
             </AccordionContent>
           </AccordionItem>
         ))}

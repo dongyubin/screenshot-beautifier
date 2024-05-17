@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "@components/Blog/Card";
+import Card from "@/components/Blog/Card";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Link from "next/link";

@@ -10,6 +10,12 @@ export default function Billings(billingUrl) {
   const handleBillings = async (e) => {
     e.preventDefault();
     // console.log("button clicked");
+    window.location = "https://shotune.lemonsqueezy.com/billing";
+  };
+
+  const handleUpgrade = async (e) => {
+    e.preventDefault();
+    // console.log("button clicked");
     // window.location = "https://shotune.lemonsqueezy.com/billing";
     window.location = "/#pricing";
   };
@@ -25,6 +31,12 @@ export default function Billings(billingUrl) {
         onClick={handleBillings}
       >
         Handle billings
+      </Button>
+      <Button
+        className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:bg-red-500 hover:bg-opacity-90"
+        onClick={handleUpgrade}
+      >
+        Upgrade Now
       </Button>
     </div>
   );

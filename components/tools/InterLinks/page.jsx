@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 const compressors = [
   {
     id: 10,
@@ -96,17 +96,16 @@ const others = [
 
 const InterLink = () => {
   return (
-    <div className="container mx-auto py-10">
+    <div className="py-10">
       <div className="flex flex-col justify-center items-center gap-5 pb-7">
         <h3>Compressors</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:w-[80%]">
           {compressors.map((each) => {
             return (
               <div
-                id={each.id}
                 className="px-1 h-10 flex items-center justify-center rounded border text-center cursor-pointer hover:bg-primary hover:border-none transition-all"
               >
-                <a href={each.url}>{each.tool}</a>
+                <Link href={each.url} key={each.id} target="_blank">{each.tool}</Link>
               </div>
             );
           })}
@@ -119,10 +118,9 @@ const InterLink = () => {
           {converters.map((each) => {
             return (
               <div
-                id={each.id}
                 className="px-1 h-10 flex items-center justify-center rounded border text-center cursor-pointer hover:bg-primary hover:border-none transition-all"
               >
-                <a href={each.url}>{each.tool}</a>
+                <Link href={each.url} key={each.id} target="_blank">{each.tool}</Link>
               </div>
             );
           })}
@@ -134,11 +132,8 @@ const InterLink = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:w-[80%]">
           {others.map((each) => {
             return (
-              <div
-                id={each.id}
-                className="px-1 h-10 flex items-center justify-center rounded border text-center cursor-pointer hover:bg-primary hover:border-none transition-all"
-              >
-                <a href={each.url}>{each.tool}</a>
+              <div className="px-1 h-10 flex items-center justify-center rounded border text-center cursor-pointer hover:bg-primary hover:border-none transition-all">
+                <Link href={each.url} key={each.id} target="_blank">{each.tool}</Link>
               </div>
             );
           })}

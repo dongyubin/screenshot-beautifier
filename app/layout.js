@@ -1,10 +1,10 @@
-import "@app/globals.css";
+import "@/app/styles/globals.css";
 // import { Inter } from "next/font/google";
 import AuthProvider from "@/components/AuthProvider";
 import { Toaster as Toaster2 } from "@/components/ui/toaster";
 import { Toaster } from "react-hot-toast";
-import Navbar from "@components/landingPage/Navbar";
-import Footer from "@components/landingPage/Footer";
+import Navbar from "@/components/landingPage/Navbar";
+import Footer from "@/components/footer/Footer";
 
 import GoogleAnalytics from "@components/GoogleAnalytics";
 // const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children, params: { lang }, }) {
   return (
     <html lang={(lang && lang[0]) || defaultLocale} suppressHydrationWarning>
-      <body>
+      <body class="min-h-screen">
         {process.env.GOOGLE_ANALYTICS ? (
           <GoogleAnalytics ga_id={process.env.GOOGLE_ANALYTICS} />
         ) : null}

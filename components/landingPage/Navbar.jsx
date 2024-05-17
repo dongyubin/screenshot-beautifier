@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import { useState, useEffect } from 'react';
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,11 +23,34 @@ const Navbar = () => {
   const session = useSession();
   const router = useRouter();
   const supabase = createClientComponentClient();
-
+  const [currentHref, setCurrentHref] = useState('');
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     router.refresh();
   };
+
+  useEffect(() => {
+    setCurrentHref(window.location.href);
+  }, []);
+
+  const links = [
+    {
+      label: "Features",
+      href: "#features",
+    },
+    {
+      label: "Pricing",
+      href: "#pricing",
+    },
+    // {
+    //   label: "Wall of Love",
+    //   href: "#WallOfLove",
+    // },
+    {
+      label: "FAQ",
+      href: "#faqs",
+    },
+  ];
 
   return (
     <div className="inset-0 bg-transparent flex justify-center items-center bg-red-500">
@@ -42,6 +66,7 @@ const Navbar = () => {
             </span>
           </Link>
           <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+
             {session ? (
               <Button onClick={handleSignOut}>Log Out</Button>
             ) : (
@@ -61,6 +86,9 @@ const Navbar = () => {
                 </Button>
               </div>
             )}
+
+            <LangSwitcher />
+
             <DropdownMenu>
               <DropdownMenuTrigger className="inline-flex items-center p-2 w-12 h-12 justify-center text-sm text-gray-500 rounded-lg md:hidden  dark:text-gray-400 ml-0">
                 <IoMenu className="w-12 h-12" />
@@ -69,15 +97,19 @@ const Navbar = () => {
                 <DropdownMenuItem>
                   <Link href={""}>Home</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href={"#features"}>Features</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href={"#pricing"}>Pricing</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href={"#faqs"}>Faqs</Link>
-                </DropdownMenuItem>
+                {links.map((link) => (
+                  <DropdownMenuItem>
+                    <Link
+                      key={link.label}
+                      href={`${currentHref.endsWith('tools') ? '/' : ''}${link.href}`}
+                      aria-label={link.label}
+                      title={link.label}
+                      className="tracking-wide transition-colors duration-200 font-norma"
+                    >
+                      {link.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
                 {session && (
                   <DropdownMenuItem>
                     <Link href={"/billings"}>Billings</Link>
@@ -95,36 +127,26 @@ const Navbar = () => {
                 )}
               </DropdownMenuContent>
             </DropdownMenu>
+
           </div>
           <div
             class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
             id="navbar-sticky"
           >
             <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border  rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  ">
-              <li>
-                <Link
-                  href="#features"
-                  class="block py-2 px-3  rounded md:bg-transparent md:p-0 "
-                >
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#pricing"
-                  class="block py-2 px-3  rounded    md:p-0    "
-                >
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#faqs"
-                  class="block py-2 px-3  rounded    md:p-0    "
-                >
-                  Faqs
-                </Link>
-              </li>
+              {links.map((link) => (
+                <li>
+                  <Link
+                    key={link.label}
+                    href={`${currentHref.endsWith('tools') ? '/' : ''}${link.href}`}
+                    aria-label={link.label}
+                    title={link.label}
+                    class="block py-2 px-3  rounded md:bg-transparent md:p-0 "
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
               {session && (
                 <li>
                   <Link
@@ -137,8 +159,9 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <LangSwitcher />
+
         </div>
+
       </nav>
     </div>
   );

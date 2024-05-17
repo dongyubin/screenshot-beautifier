@@ -4,13 +4,13 @@ import { NextResponse } from "next/server";
 
 export async function middleware(req) {
   const res = NextResponse.next();
-  
+
   // Create a Supabase client configured to use cookies
   const supabase = createMiddlewareClient({ req, res });
 
   // Refresh session if expired - required for Server Components
   await supabase.auth.getSession();
-  
+
   // 获取请求的 URL 对象以编辑它
   const { pathname } = req.nextUrl;
 
@@ -18,11 +18,11 @@ export async function middleware(req) {
   const isExit = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
-  if (!isExit) {
-    // 如果没有匹配到支持的语言前缀，重定向到根路径
-    req.nextUrl.pathname = `/`;
-    return Response.redirect(req.nextUrl);
-  }
+  // if (!isExit) {
+  //   // 如果没有匹配到支持的语言前缀，重定向到根路径
+  //   req.nextUrl.pathname = `/`;
+  //   return Response.redirect(req.nextUrl);
+  // }
 
   return res;
 }

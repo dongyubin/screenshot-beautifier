@@ -10,8 +10,8 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { defaultLocale, getDictionary } from "@/lib/i18n";
 
 // const page = async ({ params }) => {
-  export default async function page({ params: { lang },
-  }) {
+export default async function page({ params: { lang },
+}) {
   const cookieStore = cookies();
   const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
   const {
@@ -30,7 +30,7 @@ import { defaultLocale, getDictionary } from "@/lib/i18n";
     }
   }
 
-  
+
   let langName =
     lang && lang[0] && lang[0] !== "index" ? lang[0] : defaultLocale;
 

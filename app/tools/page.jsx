@@ -1,5 +1,4 @@
-import React from "react";
-import InterLink from "@components/tools/InterLinks/page";
+import InterLink from "@/components/tools/InterLinks/page";
 
 const page = () => {
   return (

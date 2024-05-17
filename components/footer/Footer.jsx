@@ -5,11 +5,8 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer
-      class="container
-    mx-auto"
-    >
-      <div class=" md:py-12  flex items-center justify-between sm:flex-row flex-col">
+    <footer class="container mx-auto">
+      <div class="md:py-12  flex items-center justify-between sm:flex-row flex-col">
         <div>
           <a class="flex title-font font-medium items-center md:justify-start justify-center ">
             <Image
@@ -35,14 +32,14 @@ const Footer = () => {
         <div className="md:ml-3 flex flex-col justify-center  text-gray-500 text-sm max-md:mt-4 max-md:text-center">
           <div className="text-gray-300 mb-2">LINKS</div>
           <ul className="flex flex-col gap-2 ">
-            <li>
+            {/* <li>
               <Link href="/blog">Blog</Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/tools">Tools</Link>
+              <Link href="/tools" target="_blank">Tools</Link>
             </li>
           </ul>
         </div>
